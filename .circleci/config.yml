@@ -6,6 +6,10 @@ jobs:
     steps:
       - checkout
       - run:
+          name: show dest
+          command: ls
+          working_directory: ./
+      - run:
           name: Build PDF
           command: review-pdfmaker config.yml
           working_directory: ./articles
