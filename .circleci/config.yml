@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Build PDF
-          command: rake clean pdf
+          command: review-pdfmaker config.yml
           working_directory: ./articles
       - store_artifacts:
           path: ./articles/book.pdf
