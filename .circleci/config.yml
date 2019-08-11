@@ -20,3 +20,11 @@ jobs:
       - store_artifacts:
           path: ./book.pdf
           destination: output.pdf
+      - run:
+          name: build web page
+          command: review-webmaker config.yml
+          working_directory: ./
+      - run:
+          name: show web
+          command: ls
+          working_directory: ./webroot
