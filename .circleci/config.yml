@@ -12,7 +12,11 @@ jobs:
       - run:
           name: Build PDF
           command: review-pdfmaker config.yml
-          working_directory: ./articles
+          working_directory: ./
+      - run:
+          name: show dest
+          command: ls
+          working_directory: ./
       - store_artifacts:
-          path: ./articles/book.pdf
-          destination: book.pdf
+          path: ./leetcode.pdf
+          destination: output.pdf
