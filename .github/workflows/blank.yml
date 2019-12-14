@@ -1,17 +1,37 @@
 name: CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: vvakame/review:4.0
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+      - uses: actions/checkout@v1
+      - name: Build PDF
+        run: review-pdfmaker config.yml
+      - name: show ls
+        run: ls
+      - name: Upload PDF for this job
+        uses: actions/upload-artifact@v1
+        with:
+          name: book
+          path: book.pdf
+      - name: show ls
+        run: ls
+      - name: Download PDF
+        uses: actions/download-artifact@v1
+        with:
+          name: book
+      - name: Build Web Page
+        run: review-webmaker config.yml
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.

@@ -1,9 +1,8 @@
 PREDEF:
 
 CHAPS:
-  - leetcode.re
+  - book.re
 
 APPENDIX:
 
 POSTDEF:
-
