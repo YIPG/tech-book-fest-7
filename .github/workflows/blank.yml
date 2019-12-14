@@ -10,10 +10,11 @@ on:
 
 jobs:
   build:
-    runs-on: vvakame/review:4.0
+    runs-on: ubuntu-18.04
 
     steps:
       - uses: actions/checkout@v1
+      - uses: docker://vvakame/review:4.0
       - name: Build PDF
         run: review-pdfmaker config.yml
       - name: show ls
